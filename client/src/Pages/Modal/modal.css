@@ -1,0 +1,24 @@
+.btn-link{
+    color: #183319;
+    font-size: 17px;
+}
+
+.btn-link:hover{
+    color: #008000
+}
+
+.container{
+    margin-top: 15px;
+}
+
+.styles_modal__gNwvD{
+    width: 100%
+}
+
+h4{
+    font-size: 1.5rem;
+    font-family: unset;
+    font-stretch: ultra-condensed;
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
