@@ -50,21 +50,33 @@ img{
     padding-left: 32px;
 }
 
+.KindAccount{
+    background-image: linear-gradient(
+         #ffffff, #8db936
+     );
+     width: 100%;
+     background-position: center center;
+     background-repeat: no-repeat;
+     background-size: cover;
+     padding-bottom: 12px;
+ text-align: center
+ }
+ 
+ .KindAccountImg{
+   width: 41%;
+   height: auto;
+ }
 
-/* styles nav */
-.person{
-    width: 28%;
-    height: auto;
-}
-
-p{
+ .ImgP{
     font-size: 1.5rem;
     margin: 0px;
-    color: white !important;
+    color: #183319 !important;
 }
 
-p:hover{
+.ImgP:hover{
     color: #8db936 !important;
     text-decoration: none
 }
+
+
 

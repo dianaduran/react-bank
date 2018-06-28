@@ -4,6 +4,7 @@ import Login from "./Pages/Login";
 import Nav from "./components/Nav";
 import Footer from "./Pages/Footer";
 import Account from "./Pages/Account";
+import Signup from "./Pages/SignUp";
 
 //Styles and Components
 import "./App.css";
@@ -18,6 +19,7 @@ class App extends Component {
           <Nav />
           <Route exact path="/" component={Login} />
           <Route exact path="/account" component={Account} />
+          <Route exact path="/signup" component={Signup} />
           <Footer />
         </div>
         </Router>

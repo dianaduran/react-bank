@@ -59,11 +59,13 @@ export default class Signup extends React.Component {
                 name="password"
                 placeholder="Password (required)"
               />
+              <div className="text-center"> 
               <FormBtn
 
               >
                 Continue
               </FormBtn>
+              </div>
             </form>
           </Container>
 

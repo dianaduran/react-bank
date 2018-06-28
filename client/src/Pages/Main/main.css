@@ -1,0 +1,34 @@
+.Main{
+    background-image: linear-gradient(
+        #ffffff, #8db936
+    );
+    width: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 77px;
+    padding-top: 133px;
+    padding-bottom: 140px;
+}
+
+
+
+
+
+/* styles nav */
+.person{
+    width: 28%;
+    height: auto;
+}
+
+p{
+    font-size: 1.5rem;
+    margin: 0px;
+    color: white !important;
+}
+
+p:hover{
+    color: #8db936 !important;
+    text-decoration: none
+}
+
