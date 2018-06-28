@@ -5,6 +5,7 @@ import Nav from "./components/Nav";
 import Footer from "./Pages/Footer";
 import Account from "./Pages/Account";
 import Signup from "./Pages/SignUp";
+import NoMatch from "./Pages/NoMatch";
 
 //Styles and Components
 import "./App.css";
@@ -20,6 +21,7 @@ class App extends Component {
           <Route exact path="/" component={Login} />
           <Route exact path="/account" component={Account} />
           <Route exact path="/signup" component={Signup} />
+          <Route component={NoMatch} />
           <Footer />
         </div>
         </Router>

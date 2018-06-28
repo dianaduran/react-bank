@@ -1,0 +1,13 @@
+.NoMatch{
+    background-image: linear-gradient(
+        #ffffff, #8db936
+    );
+    width: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 77px;
+    padding-top: 230px;
+    padding-bottom: 140px;
+    text-align: center
+}
