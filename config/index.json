@@ -1,0 +1,4 @@
+{
+  "dbUri": "mongodb://localhost/virtu_bank",
+  "jwtSecret": "a secret phrase!!"
+}
