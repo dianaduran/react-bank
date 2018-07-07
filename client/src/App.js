@@ -6,10 +6,12 @@ import {BrowserRouter as Router,Route,Link, Redirect} from 'react-router-dom';
 import "./App.css";
 
 import Logo from "./image/logo.png";
+import Person from "./image/person.png";
 import HomePage from "./components/HomePage/HomePage";
 import DashboardPage from "./Pages/Dashboard";
 import LoginPage from "./Pages/LoginPage";
 import SignUpPage from './Pages/SignUpPage';
+import Account from "./components/Account/Account";
 import LogoutFunction from './Pages/LogoutFunction';
 import Auth from './modules/Auth';
 
@@ -76,7 +78,7 @@ class App extends Component {
             </div>
             {this.state.authenticated ? (
               <div className="top-bar-right">
-                <Link to="/dashboard">Dashboard</Link>
+                <Link to="/dashboard"><img className="person" alt="person" src={Person} /></Link>
                 <Link to="/logout">Log out</Link>
               </div>
             ) : (
@@ -93,6 +95,7 @@ class App extends Component {
           <LoggedOutRoute path="/login" component={LoginPage} toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />
           <LoggedOutRoute path="/signup" component={SignUpPage}/>
           <Route path="/logout" component={LogoutFunction}/>
+          <Route path="/account" component={SignUpPage}/>
         </div>
 
       </Router>

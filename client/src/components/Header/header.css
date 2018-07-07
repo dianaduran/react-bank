@@ -1,0 +1,24 @@
+.container{
+    width: 100%;
+    height: auto;
+    position: relative;
+    text-align: center;
+  }
+
+
+.homeImg{
+/* background-image: url('../../image/Couple-banking-AdobeStock_125640641.jpeg'); */
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: auto;
+  width: 80%;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+

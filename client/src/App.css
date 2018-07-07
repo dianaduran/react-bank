@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-size: 16px;
-  height: 100%
+  padding: 0
 }
 
 a {
@@ -72,7 +72,7 @@ a:hover {
   height: 50%;
 }
 
-.App {
+.top-bar {
   background-image: linear-gradient(
     #ffffff, #8db936
 );
@@ -80,4 +80,22 @@ a:hover {
   background-repeat: no-repeat;
   background-size: cover;
   height: auto;
+ }
+
+ .card-heading{
+  color: green;
+  font-size: 31px;
+  margin-bottom: 0px;
+ }
+
+ .field-line, .button-line {
+  padding: 7px;
+ }
+
+ .person{
+  width: 9%;
+  margin-top: 8px;
+ }
+ table{
+   margin-left: 5px
  }

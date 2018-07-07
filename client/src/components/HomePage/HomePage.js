@@ -1,9 +1,10 @@
 import React from 'react';
-import { Card, CardTitle, CardText } from 'material-ui/Card';
-
+import { CardText } from 'material-ui/Card';
 import Auth from '../../modules/Auth';
+import "./homepage.css";
+import Header from "../Header/Header";
+import { Link } from "react-router-dom";
 
-import Imgen from '../../image/Couple-banking-AdobeStock_125640641.jpeg';
 
 
 class HomePage extends React.Component {
@@ -16,14 +17,16 @@ class HomePage extends React.Component {
 
   render() {
     return (
-      <Card className="container">
+      <div className="container">
         {/* <CardTitle title="VirtuBank" subtitle="This is the home page." /> */}
         {Auth.isUserAuthenticated() ? (
-          <CardText style={{ fontSize: '16px', color: 'green' }}>Welcome! You are logged in.</CardText>
+          <div>
+            <CardText style={{ fontSize: '16px', color: 'green' }}>Welcome! You are logged in.</CardText>
+          </div>
         ) : (
-          <img className="logo" alt="Img" src={Imgen} />
+            <Header />
           )}
-      </Card>
+      </div>
     )
   }
 };
