@@ -182,10 +182,10 @@ function validateAccountForm(payload) {
   let isFormValid = true;
   let message = '';
 
-  console.log('payload',payload);
-  if (!payload || typeof payload.account === null) {
+  console.log('payload',payload.account);
+  if (!payload || payload.account === []) {
     isFormValid = false;
-    errors.email = 'Please select an account.';
+    errors.account = 'Please select an account.';
   }
 
   if (!isFormValid) {

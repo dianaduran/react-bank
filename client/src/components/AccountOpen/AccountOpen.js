@@ -12,7 +12,7 @@ const AccountOpen = ({
   onSubmit,
   onChange,
   errors,
-  account
+  val
   
 }) => (
     <Card className="container">
@@ -25,13 +25,13 @@ const AccountOpen = ({
           <SelectField
             floatingLabelText="Account"
             name="account"
-            value={onChange}
+            value={val}
             onChange={onChange}
             errorText={errors.account}
             >
             <MenuItem value={null} primaryText="" />
-            <MenuItem value={account.saving} primaryText="Saving" />
-            <MenuItem value={account.checking} primaryText="Checking" />
+            <MenuItem value={val.saving} primaryText="Saving" />
+            <MenuItem value={val.checking} primaryText="Checking" />
           </SelectField>
         </div>
 
@@ -49,7 +49,7 @@ AccountOpen.propTypes = {
   onChange: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired,
   // successMessage: PropTypes.string.isRequired,
-  account: PropTypes.object.isRequired
+  val: PropTypes.object.isRequired
 };
 
 export default AccountOpen;
