@@ -1,29 +1,13 @@
-module.exports = function(sequelize, Sequelize) {
-    var Account = sequelize.define('account', {
+const mongoose = require('mongoose');
 
-        id: {
-            autoIncrement: true,           
-            primaryKey: true,
-            type: Sequelize.INTEGER           
-        },
+// Save a reference to the Schema constructor
+const Schema = mongoose.Schema;
 
-        ac_balance: {
-            type: Sequelize.DOUBLE,
-            allowNull: false,
-            validate: {
-                notEmpty: false,
-            }
-        },
-        ac_currency: {
-            type: Sequelize.STRING,
-            allowNull: false,
-            validate: {
-                notEmpty: false,
-            }
-        },
-  },{
-    freezeTableName:true,
-   });
+// define the User model schema
+const AccountSchema = new Schema({
+  account:  String   
+});
 
-   return Account;
-}
+const Account = mongoose.model('Account', AccountSchema);
+
+module.exports = Account;

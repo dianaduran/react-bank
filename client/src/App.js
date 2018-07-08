@@ -12,6 +12,7 @@ import DashboardPage from "./Pages/Dashboard";
 import LoginPage from "./Pages/LoginPage";
 import SignUpPage from './Pages/SignUpPage';
 import Account from "./components/Account/Account";
+import AccountOpenPage from './Pages/AccountOpenPage';
 import LogoutFunction from './Pages/LogoutFunction';
 import Auth from './modules/Auth';
 
@@ -79,6 +80,7 @@ class App extends Component {
             {this.state.authenticated ? (
               <div className="top-bar-right">
                 <Link to="/dashboard"><img className="person" alt="person" src={Person} /></Link>
+                <Link to="/accountOpen">Open Account</Link>
                 <Link to="/logout">Log out</Link>
               </div>
             ) : (
@@ -92,8 +94,10 @@ class App extends Component {
 
           <PropsRoute exact path="/" component={HomePage} toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />
           <PrivateRoute path="/dashboard" component={DashboardPage}/>
+          <PrivateRoute path="/accountOpen" component={AccountOpenPage}/>
           <LoggedOutRoute path="/login" component={LoginPage} toggleAuthenticateStatus={() => this.toggleAuthenticateStatus()} />
           <LoggedOutRoute path="/signup" component={SignUpPage}/>
+
           <Route path="/logout" component={LogoutFunction}/>
           <Route path="/account" component={SignUpPage}/>
         </div>
