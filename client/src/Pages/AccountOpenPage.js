@@ -13,14 +13,16 @@ import Dashboard from '../components/Dashboard/Dashboard';
 
 let valueSelect = ''; //store the value selected 
 let valueInput = ''; //store value input
+let valueError='';
+
 class AccountOpenPage extends React.Component {
 
-  // set the initial component state
-  state = {
-    errors: '',
-    account: '',
-    balance: 0
-  }
+      // set the initial component state
+      state = {
+        errors: '',
+        account: '',
+        balance: 0
+      };
 
   /**
   * Process the form.
@@ -30,14 +32,16 @@ class AccountOpenPage extends React.Component {
   * 
   */
 
-  processForm(event) {
-    // const { history } = this.props;
-   
+  processForm=(event)=> {
+    
     event.preventDefault();
+    const { history } = this.props;
+   
     
     let userId; //get the id from the local storage
 
     let local = localStorage.getItem('token');
+    console.log(local);
     jwt.verify(local, config.jwtSecret, (err, decoded) => {
       userId = decoded.sub
     })
@@ -51,23 +55,21 @@ class AccountOpenPage extends React.Component {
     if (valueSelect === "account=Checking" || valueSelect === "account=Saving") {
       console.log("form data", formData);
       axios.post("/auth/accountOpen/" + userId, formData)
-        .then(res => res.data,  
-        // <Redirect to='/dashboard' />
-      //   <Router>
-      //     <Redirect from='/accountOpen' to='/dashboard'/>
-      //     <Route path='/dashboard' component={Dashboard}/>
-      // </Router> 
-      
-        )        
+        .then(res => 
+            history.push('/dashboard')//redirect to dashboard page
+          )        
         .catch(err => console.log(err));
-        // history.push('/dashboard')
+        
     }
     else if (valueSelect !== "account=Checking" || valueSelect !== "account=Saving") {
-      console.log('error');
-
+     
+        this.setState({errors:'Please select an account.', account:'', balance:''});
 
     }
+    
   }
+
+
 
   /**
    * Change the user object.
@@ -88,6 +90,8 @@ class AccountOpenPage extends React.Component {
     });
     valueInput = `&balance=${this.state.balance}`
   };
+
+
 
   /**
    * Render the component.
