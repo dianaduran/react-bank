@@ -222,5 +222,4 @@ function validateAccountForm(payload) {
   });
 
 
-
 module.exports = router;

@@ -49,11 +49,6 @@ class SignUpPage extends React.Component {
                      &address=${address}`;
 
     // create an AJAX request
-// console.log('data', formData);
-//             axios.post("/auth/signup",  formData)
-//             .then(res => console.log('data sent to DB',res))
-//             .catch(err => console.log(err));
-        
 const xhr = new XMLHttpRequest();
 xhr.open('post', '/auth/signup');
 xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');

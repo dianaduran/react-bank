@@ -39,7 +39,7 @@ class AccountOpenPage extends React.Component {
       userId = decoded.sub
     })
     const formData = val;
- console.log(formData);
+ console.log("form data",formData);
     // create an AJAX request
 // console.log('data', formData);
 if(formData==="Checking" || formData==="Saving"){
@@ -104,7 +104,7 @@ else{
 
   handleChange = (account) => {
     this.setState({account});
-    val=`selct: ${account.label}`;
+    val=`${account.label}`;
     console.log(`selct: ${account.label}`);
   }
 
@@ -126,8 +126,8 @@ else{
         value={value}
         onChange={this.handleChange}
         options={[
-          { value: 'one', label: 'One' },
-          { value: 'two', label: 'Two' },
+          { value: 'checking', label: 'Checking' },
+          { value: 'saving', label: 'Saving' },
         ]}
       />
 
