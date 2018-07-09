@@ -183,7 +183,7 @@ function validateAccountForm(payload) {
   let message = '';
 
   console.log('payload',payload);
-  if (!payload || payload === "Saving: ''") {
+  if (!payload) {
     isFormValid = false;
     errors.account = 'Please select an account.';
   }
@@ -200,15 +200,15 @@ function validateAccountForm(payload) {
 }
 
  router.post('/accountOpen/:id', (req, res, next) => {
-    const validationResult = validateAccountForm(req.body);
-    console.log('validate', validationResult);
-    if (!validationResult.success) {
-      return res.status(400).json({
-        success: false,
-        message: validationResult.message,
-        errors: validationResult.errors
-      });
-    }
+    // const validationResult = validateAccountForm(req.body);
+    // console.log('validate', validationResult);
+    // if (!validationResult.success) {
+    //   return res.status(400).json({
+    //     success: false,
+    //     message: validationResult.message,
+    //     errors: validationResult.errors
+    //   });
+    // }
 
   Account.create(req.body)
     .then(dbAccount=> 

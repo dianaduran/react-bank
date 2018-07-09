@@ -5,7 +5,8 @@ const Schema = mongoose.Schema;
 
 // define the User model schema
 const AccountSchema = new Schema({
-  account:  String   
+  account:  String,
+  balance: Number   
 });
 
 const Account = mongoose.model('Account', AccountSchema);
