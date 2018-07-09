@@ -182,8 +182,8 @@ function validateAccountForm(payload) {
   let isFormValid = true;
   let message = '';
 
-  console.log('payload',payload.account);
-  if (!payload || payload.account === []) {
+  console.log('payload',payload);
+  if (!payload || payload === "Saving: ''") {
     isFormValid = false;
     errors.account = 'Please select an account.';
   }

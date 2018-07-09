@@ -42,10 +42,14 @@ class AccountOpenPage extends React.Component {
  console.log("form data",formData);
     // create an AJAX request
 // console.log('data', formData);
-if(formData==="Checking" || formData==="Saving"){
+if(formData==="account=Checking" || formData==="account=Saving"){
+  console.log("form data",formData);
             axios.post("/auth/accountOpen/"+userId,  formData)
             .then(res => res.data)
             .catch(err => console.log(err));
+}
+else if(formData!=="Checking" || formData!=="Saving"){
+ console.log('error');
 }
 else{
   const xhr = new XMLHttpRequest();
@@ -104,7 +108,7 @@ else{
 
   handleChange = (account) => {
     this.setState({account});
-    val=`${account.label}`;
+    val=`account=${account.label}`;
     console.log(`selct: ${account.label}`);
   }
 

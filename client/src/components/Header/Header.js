@@ -7,14 +7,15 @@ import IconButton from 'material-ui/IconButton';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import Paper from 'material-ui/Paper';
 import "./header.css";
-import Imgen from '../../image/Couple-banking-AdobeStock_125640641.jpeg';
+import Imgen from '../../image/sunshine_back.png';
 import Card1 from '../../image/CC_1_VB.svg';
 import Card2 from '../../image/CC_2_VB.svg';
 import Card3 from '../../image/CC_3_VB.svg';
 
 const style = {
     display: 'inline-block',
-    margin: '16px 32px 16px 0',
+    margin: '46px 32px 16px 0',
+    width: '100%'
 };
 
 const styles = {

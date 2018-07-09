@@ -22,14 +22,6 @@ class DashboardPage extends React.Component {
    */
   componentDidMount() {
 
-    // fecth('/api/dashboard')
-	// .then((response) => {
-    // 	return response.json()
-    // })
-    // .then((recurso) => {
-    // 	console.log(recurso)
-    // })
-
     const xhr = new XMLHttpRequest();
     xhr.open('get', '/api/dashboard');
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
