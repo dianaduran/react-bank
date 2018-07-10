@@ -1,4 +1,7 @@
 import React from 'react';
+import jwt from 'jsonwebtoken';
+import config from '../../modules/index.json';
+import axios from 'axios';
 import Paper from 'material-ui/Paper';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
@@ -20,7 +23,9 @@ const style = {
 class Account extends React.Component {
 
     state = {
-        selected: [1],
+       savingList:[],
+       checkingList:[],
+       accounts:[]
       };
     
       isSelected = (index) => {
@@ -33,14 +38,51 @@ class Account extends React.Component {
         });
       };
 
+      componentDidMount(){
+       let userId; //get the id from the local storage
+
+        let local = localStorage.getItem('token');
+       
+        jwt.verify(local, config.jwtSecret, (err, decoded) => {
+          userId = decoded.sub
+        })
+
+        console.log(userId);
+        
+        axios.get("/auth/getAccount/" + userId)
+        .then(res => 
+          this.setState({accounts:res.data.account}) 
+         
+          
+          // accounts.push(res.data.account),
+        //  console.log(accounts.filter(acc=>acc.account.startsWith("C"))),
+         )        
+        .catch(err => console.log(err));
+      };
+
+      GetChecking=(event)=>{
+          event.preventDefault();
+          // this.setState({checkingList:this.state.accounts.filter(acc=>acc.account.startsWith("C"))})
+          console.log(this.state.accounts.filter(acc=>acc.account.startsWith("C")))
+      }
+
+      GetSaving=(event)=>{
+        event.preventDefault();
+        // this.setState({savingList:this.state.accounts.filter(acc=>acc.account.startsWith("S"))})
+        console.log(this.state.accounts.filter(acc=>acc.account.startsWith("S")))
+      }
+
+
+     
+
     render() {
         return (
     <div>
         <Paper style={style}>
             <Menu desktop={true}>
-                <MenuItem primaryText="Checking" />
+                <MenuItem primaryText="Checking" onClick={this.GetChecking} />
                 <Divider />
-                <MenuItem primaryText="Saving" />
+                <MenuItem primaryText="Saving" onClick={this.GetSaving} />
             </Menu>
         </Paper>
         <Paper style={style}>
@@ -53,7 +95,7 @@ class Account extends React.Component {
           </TableRow>
         </TableHeader>
         <TableBody>
-          <TableRow selected={this.isSelected(0)}>
+          <TableRow >
             <TableRowColumn>1</TableRowColumn>
             <TableRowColumn>John Smith</TableRowColumn>
             <TableRowColumn>Employed</TableRowColumn>

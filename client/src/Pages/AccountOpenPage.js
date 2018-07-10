@@ -9,7 +9,7 @@ import TextField from 'material-ui/TextField';
 import jwt from 'jsonwebtoken';
 import config from '../modules/index.json';
 import axios from 'axios';
-import Dashboard from '../components/Dashboard/Dashboard';
+
 
 let valueSelect = ''; //store the value selected 
 let valueInput = ''; //store value input
@@ -118,6 +118,7 @@ class AccountOpenPage extends React.Component {
             <TextField
               floatingLabelText="Start Balance"
               name="balance"
+              type="number"
               onChange={this.handleInputChange}
               value={this.state.balance}
             />

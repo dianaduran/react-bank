@@ -177,48 +177,31 @@ router.post('/login', (req, res, next) => {
  * @returns {object} The result of validation. Object contains a boolean validation result,
  *                   errors tips, and a global message for the whole form.
  */
-function validateAccountForm(payload) {
-  const errors = {};
-  let isFormValid = true;
-  let message = '';
-
-  console.log('payload',payload);
-  if (!payload) {
-    isFormValid = false;
-    errors.account = 'Please select an account.';
-  }
-
-  if (!isFormValid) {
-    message = 'Check the form for errors.';
-  }
-
-  return {
-    success: isFormValid,
-    message,
-    errors
-  };
-}
-
  router.post('/accountOpen/:id', (req, res, next) => {
-    // const validationResult = validateAccountForm(req.body);
-    // console.log('validate', validationResult);
-    // if (!validationResult.success) {
-    //   return res.status(400).json({
-    //     success: false,
-    //     message: validationResult.message,
-    //     errors: validationResult.errors
-    //   });
-    // }
-
+  
   Account.create(req.body)
     .then(dbAccount=> 
         // If a Account was created successfully, find one User (there's only one) and push the new Account's _id to the User's `account` array
         // { new: true } tells the query that we want it to return the updated User -- it returns the original by default
         // Since our mongoose query returns a promise, we can chain another `.then` which receives the result of the query
-         User.findOneAndUpdate({ _id: req.params.id }, { account: dbAccount._id }, { new: true })
+         User.findOneAndUpdate({ _id: req.params.id }, {$push:{ account: dbAccount._id }}, { new: true })
       )
       .then(updated => res.status(201).json(updated))
       .catch(next)
+  });
+
+  router.get('/getAccount/:id', (req, res, next)=>{
+    User.findOne({ _id: req.params.id })
+    // ..and populate all of the notes associated with it
+    .populate("account")
+    .then(dbAccount=> 
+      // If we were able to successfully find an Article with the given id, send it back to the client
+      res.json(dbAccount)
+    )
+    .catch(err=> 
+      // If an error occurred, send it to the client
+      res.json(err)
+    );
   });
 
 
