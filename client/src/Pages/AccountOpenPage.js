@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {BrowserRouter as Router, Redirect, Route} from "react-router-dom";
 import Card from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import Select from 'react-select';
@@ -13,7 +12,7 @@ import axios from 'axios';
 
 let valueSelect = ''; //store the value selected 
 let valueInput = ''; //store value input
-let valueError='';
+
 
 class AccountOpenPage extends React.Component {
 

@@ -11,7 +11,6 @@ import HomePage from "./components/HomePage/HomePage";
 import DashboardPage from "./Pages/Dashboard";
 import LoginPage from "./Pages/LoginPage";
 import SignUpPage from './Pages/SignUpPage';
-import Account from "./components/Account/Account";
 import AccountOpenPage from './Pages/AccountOpenPage';
 import LogoutFunction from './Pages/LogoutFunction';
 import Auth from './modules/Auth';

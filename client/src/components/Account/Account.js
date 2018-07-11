@@ -3,109 +3,141 @@ import jwt from 'jsonwebtoken';
 import config from '../../modules/index.json';
 import axios from 'axios';
 import Paper from 'material-ui/Paper';
-import Menu from 'material-ui/Menu';
-import MenuItem from 'material-ui/MenuItem';
+import { List, ListItem } from 'material-ui/List';
+import ActionGrade from 'material-ui/svg-icons/action/grade';
 import Divider from 'material-ui/Divider';
-import {
-    Table,
-    TableBody,
-    TableHeader,
-    TableHeaderColumn,
-    TableRow,
-    TableRowColumn,
-  } from 'material-ui/Table';
+
 
 const style = {
-    display: 'inline-block',
-    margin: '16px 32px 16px 0',
-};
+  margin: '16px 0px 16px 0',
+  display: 'inherit'
+ }
+
+const accStyle={
+  padding:'20px'
+}
 
 class Account extends React.Component {
 
-    state = {
-       savingList:[],
-       checkingList:[],
-       accounts:[]
-      };
-    
-      isSelected = (index) => {
-        return this.state.selected.indexOf(index) !== -1;
-      };
-    
-      handleRowSelection = (selectedRows) => {
-        this.setState({
-          selected: selectedRows,
-        });
-      };
+  state = {
+    savingList: [],
+    checkingList: [],
+    accounts: []
+  };
 
-      componentDidMount(){
-       let userId; //get the id from the local storage
+  isSelected = (index) => {
+    return this.state.selected.indexOf(index) !== -1;
+  };
 
-        let local = localStorage.getItem('token');
-       
-        jwt.verify(local, config.jwtSecret, (err, decoded) => {
-          userId = decoded.sub
-        })
+  handleRowSelection = (selectedRows) => {
+    this.setState({
+      selected: selectedRows,
+    });
+  };
 
-        console.log(userId);
-        
-        axios.get("/auth/getAccount/" + userId)
-        .then(res => 
-          this.setState({accounts:res.data.account}) 
-         
-          
-          // accounts.push(res.data.account),
-        //  console.log(accounts.filter(acc=>acc.account.startsWith("C"))),
-         )        
-        .catch(err => console.log(err));
-      };
+  componentDidMount() {
+    let userId; //get the id from the local storage
 
-      GetChecking=(event)=>{
-          event.preventDefault();
-          // this.setState({checkingList:this.state.accounts.filter(acc=>acc.account.startsWith("C"))})
-          console.log(this.state.accounts.filter(acc=>acc.account.startsWith("C")))
-      }
+    let local = localStorage.getItem('token');
 
-      GetSaving=(event)=>{
-        event.preventDefault();
-        // this.setState({savingList:this.state.accounts.filter(acc=>acc.account.startsWith("S"))})
-        console.log(this.state.accounts.filter(acc=>acc.account.startsWith("S")))
-      }
+    jwt.verify(local, config.jwtSecret, (err, decoded) => {
+      userId = decoded.sub
+    })
+
+    //console.log('userID',userId);
+
+    axios.get("/auth/getAccount/" + userId)
+      .then(res =>
+        this.setState({ accounts: res.data.account }),
+        )
+      .catch(err => console.log(err));
+  };
+
+  //filter in the checking list the accounts type checking
+  GetChecking = (event) => {
+    event.preventDefault();
+    this.setState({ checkingList: this.state.accounts.filter(acc => acc.account.startsWith("C")) })
+    // console.log(this.state.accounts.filter(acc => acc.account.startsWith("C")))
+  }
+
+  //filter in the saving list the accounts type saving
+  GetSaving = (event) => {
+    event.preventDefault();
+    this.setState({ savingList: this.state.accounts.filter(acc => acc.account.startsWith("S")) })
+    // console.log(this.state.accounts.filter(acc => acc.account.startsWith("S")))
+  }
+
+  render() {
+    return (
+      <div style={accStyle}>
+         <Paper style={style} zDepth={5}>
+          <List>
+            
+            <ListItem
+              primaryText="Checking"
+              onClick={this.GetChecking}
+              initiallyOpen={false}
+              primaryTogglesNestedList={true}
+              nestedItems={
+                this.state.checkingList.length ? (
+                this.state.checkingList.map(check => {
+                  return (
+                <ListItem
+                  key={check._id}
+                  primaryText={`Balance... ${check.balance}`}
+                  leftIcon={<ActionGrade />}
+                />
+                  );
+                })
+              ) : ([
+                <ListItem
+                key={1}
+                primaryText="No checking account yet!!"
+                leftIcon={<ActionGrade />}
+              />
+              ])
+              }
+              
+            />
+          </List>
+          </Paper>
+
+          <Divider />
+          <Divider />
 
 
-     
-
-    render() {
-        return (
-    <div>
-        <Paper style={style}>
-            <Menu desktop={true}>
-                <MenuItem primaryText="Checking" onClick={this.GetChecking} />
-                <Divider />
-                <MenuItem primaryText="Saving" onClick={this.GetSaving} />
-            </Menu>
-        </Paper>
-        <Paper style={style}>
-        <Table onRowSelection={this.handleRowSelection}>
-        <TableHeader>
-          <TableRow>
-            <TableHeaderColumn>Date</TableHeaderColumn>
-            <TableHeaderColumn>Credit</TableHeaderColumn>
-            <TableHeaderColumn>Debit</TableHeaderColumn>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          <TableRow >
-            <TableRowColumn>1</TableRowColumn>
-            <TableRowColumn>John Smith</TableRowColumn>
-            <TableRowColumn>Employed</TableRowColumn>
-          </TableRow>
-         
-        </TableBody>
-      </Table>
-        </Paper>
-    </div>
-)};
+          <Paper style={style} zDepth={5}>
+          <List>
+            <ListItem
+              primaryText="Saving"
+              onClick={this.GetSaving}
+              initiallyOpen={false}
+              primaryTogglesNestedList={true}
+              nestedItems={
+                this.state.savingList.length ? (
+                this.state.savingList.map(sav => {
+                  return (
+                <ListItem
+                  key={sav._id}
+                  primaryText={`Balance... ${sav.balance}`}
+                  leftIcon={<ActionGrade />}
+                />
+                  );
+                })
+              ) : ([
+                <ListItem
+                key={1}
+                primaryText="No saving account yet!!"
+                leftIcon={<ActionGrade />}
+              />
+              ])
+              }
+            />
+          </List>
+          </Paper>
+      </div>
+    )
+  };
 }
 
 export default Account;

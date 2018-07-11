@@ -77,7 +77,7 @@ class Header extends React.Component {
                                         key={tile.img}
                                         actionIcon={<IconButton><StarBorder color="rgb(0, 188, 212)" /></IconButton>}
                                         titleStyle={styles.titleStyle}>
-                                        <img src={tile.img} />
+                                        <img alt="headerImg" src={tile.img} />
                                     </GridTile>
                                 ))}
                             </GridList>
