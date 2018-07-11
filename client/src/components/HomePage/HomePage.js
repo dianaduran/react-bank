@@ -16,10 +16,10 @@ class HomePage extends React.Component {
   render() {
     return (
       <div className="container">
-        {/* <CardTitle title="VirtuBank" subtitle="This is the home page." /> */}
-        {Auth.isUserAuthenticated() ? (
+         {Auth.isUserAuthenticated() ? (
           <div>
-            <CardText style={{ fontSize: '16px', color: 'green' }}>Welcome! You are logged in.</CardText>
+            {/* <CardText style={{ fontSize: '16px', color: 'green' }}>Welcome! You to VirtuBank.</CardText> */}
+            <Header />
           </div>
         ) : (
             <Header />

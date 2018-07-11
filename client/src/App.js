@@ -98,7 +98,7 @@ class App extends Component {
           <LoggedOutRoute path="/signup" component={SignUpPage}/>
 
           <Route path="/logout" component={LogoutFunction}/>
-          <Route path="/account" component={SignUpPage}/>
+         
         </div>
 
       </Router>

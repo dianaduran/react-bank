@@ -96,3 +96,8 @@ a:hover {
   width: 9%;
   margin-top: 8px;
  }
+
+ .Select-control{
+  width: 50%!important;
+  margin-left: 25%
+ }

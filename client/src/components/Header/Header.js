@@ -63,7 +63,6 @@ class Header extends React.Component {
                     <div className="centered">
                         <CardTitle style={{ fontSize: '60px', color: 'green', fontFamily: 'fantasy' }}>No overdraft fees.</CardTitle>
                         <CardText style={{ fontSize: '50px', color: 'green' }}>No worries</CardText>
-                        <Link to="/account">  <RaisedButton label="Open Account" /> </Link>
                     </div>
                 </div>
 

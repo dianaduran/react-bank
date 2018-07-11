@@ -4,7 +4,9 @@ import Card from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
+import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
+import Divider from 'material-ui/Divider';
 import jwt from 'jsonwebtoken';
 import config from '../modules/index.json';
 import axios from 'axios';
@@ -13,15 +15,26 @@ import axios from 'axios';
 let valueSelect = ''; //store the value selected 
 let valueInput = ''; //store value input
 
+const style = {
+  margin: '56px 0px 56px 0',
+  display: 'inherit'
+}
+
+const accStyle = {
+  padding: '20px'
+}
 
 class AccountOpenPage extends React.Component {
 
-      // set the initial component state
-      state = {
-        errors: '',
-        account: '',
-        balance: 0
-      };
+  // set the initial component state
+  state = {
+    errors: '',
+    account: '',
+    balance: 0,
+    bankName:'',
+    bankRoute:'',
+    bankAccount:''
+  };
 
   /**
   * Process the form.
@@ -31,44 +44,46 @@ class AccountOpenPage extends React.Component {
   * 
   */
 
-  processForm=(event)=> {
-    
+  processForm = (event) => {
+
     event.preventDefault();
     const { history } = this.props;
-   
-    
+
+    this.setState({errors:''});
     let userId; //get the id from the local storage
 
     let local = localStorage.getItem('token');
-    console.log(local);
     jwt.verify(local, config.jwtSecret, (err, decoded) => {
       userId = decoded.sub
     })
 
     //formdata is a var to add in DB
     const formData = valueSelect + valueInput;
-    console.log("form data", formData);
+  
 
     // create an AJAX request
-
-    if (valueSelect === "account=Checking" || valueSelect === "account=Saving") {
-      console.log("form data", formData);
-      axios.post("/auth/accountOpen/" + userId, formData)
-        .then(res => 
-            history.push('/dashboard')//redirect to dashboard page
-          )        
-        .catch(err => console.log(err));
-        
-    }
-    else if (valueSelect !== "account=Checking" || valueSelect !== "account=Saving") {
-     
-        this.setState({errors:'Please select an account.', account:'', balance:''});
-
-    }
-    
+ 
+    if (valueSelect === "account=Checking" || valueSelect === "account=Saving")
+   { 
+      if(this.state.bankName!=="" || this.state.bankRoute!=="" || this.state.bankAccount!=="") {
+        // console.log("form data", formData);
+        axios.post("/auth/accountOpen/" + userId, formData)
+          .then(res =>
+              history.push('/dashboard')//redirect to dashboard page
+          )
+          .catch(err => console.log(err));
+      }
+      else{
+        this.setState({ errors: 'Please complete the form to create a new account!', account:'', bankName:'', bankAccount:'', bankRoute:''});
+      }
   }
 
+   if (valueSelect !== "account=Checking" || valueSelect !== "account=Saving") {
 
+       return this.setState({ errors: 'Please complete the form to create a new account!', bankName:'', bankAccount:'', bankRoute:''});
+
+     }
+ }
 
   /**
    * Change the user object.
@@ -97,39 +112,79 @@ class AccountOpenPage extends React.Component {
    */
   render() {
     return (
-      <Card className="container">
-        <form action="/" onSubmit={this.processForm}>
-          <h2 className="card-heading">Select Account</h2>
+      <div style={accStyle}>
+        <Card className="container">
+          <form action="/" onSubmit={this.processForm}>
+            <h2 className="card-heading">Select Account</h2>
 
-          <p className="error-message">{this.state.errors}</p>
+            <p className="error-message">{this.state.errors}</p>
 
-          <Select
-            name="Account"
-            value={this.state.account}
-            onChange={this.handleChange}
-            options={[
-              { value: 'checking', label: 'Checking' },
-              { value: 'saving', label: 'Saving' },
-            ]}
-          />
-
-          <div className="field-line">
-            <TextField
-              floatingLabelText="Start Balance"
-              name="balance"
-              type="number"
-              onChange={this.handleInputChange}
-              value={this.state.balance}
+            <Select
+              name="Account"
+              value={this.state.account}
+              onChange={this.handleChange}
+              options={[
+                { value: 'checking', label: 'Checking' },
+                { value: 'saving', label: 'Saving' },
+              ]}
             />
-          </div>
 
-         <div>
-          </div>
+            <Paper style={style} zDepth={5}>
+
+              <div className="field-line">
+                <TextField
+                  floatingLabelText="Bank name"
+                  name="bankName"
+                  onChange={this.handleInputChange}
+                  value={this.state.bankName}
+                />
+              </div>
+
+              <Divider />
+
+              <div className="field-line">
+                <TextField
+                  floatingLabelText="Bank Route"
+                  name="bankRoute"
+                  onChange={this.handleInputChange}
+                  type="number"
+                  value={this.state.bankRoute}
+                />
+              </div>
+
+              <div className="field-line">
+                <TextField
+                  floatingLabelText="Account Number"
+                  name="bankAccount"
+                  type="number"
+                  onChange={this.handleInputChange}
+                  value={this.state.bankAccount}
+                />
+              </div>
+
+              <Divider />
+
+              <div className="field-line">
+                <TextField
+                  floatingLabelText="Start Balance"
+                  name="balance"
+                  type="number"
+                  onChange={this.handleInputChange}
+                  value={this.state.balance}
+                />
+              </div>
+            </Paper>
+
+
+
+            <div>
+            </div>
             <div className="button-line">
-            <RaisedButton type="submit" label="Submit" primary />
-           </div>
-        </form>
-      </Card>
+              <RaisedButton type="submit" label="Submit" primary />
+            </div>
+          </form>
+        </Card>
+      </div>
     );
   }
 
