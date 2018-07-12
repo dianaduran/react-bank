@@ -1,18 +1,27 @@
 body {
+  background-image: url('image/mundi2.png');
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-size: cover;
   margin: 0;
   font-size: 16px;
   padding: 0
 }
 
+.ClassBackground{
+  margin-top: 160px;
+}
+
 a {
-  color: #8db936;
+  color: #ffffff;
   font-weight: bold;
   text-decoration: none;
   transition: color 0.4s;
+  font-size: 14pt;
 }
 
 a:hover {
-  color: #8db936;
+  color: #d6e5f3;
 }
 
 .text-center {
@@ -21,7 +30,8 @@ a:hover {
 
 .top-bar {
   padding: 10px 15px;
-  margin-bottom: 50px;
+  margin-bottom: 230px;
+  margin-top: -160px;
 }
 .top-bar::after {
   content: '';
@@ -36,6 +46,7 @@ a:hover {
 
 .top-bar-right {
   float: right;
+  margin-top: 27pt;
 }
 
 .top-bar a,
@@ -73,9 +84,7 @@ a:hover {
 }
 
 .top-bar {
-  background-image: linear-gradient(
-    #ffffff, #8db936
-);
+  background:#002d51;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -83,7 +92,7 @@ a:hover {
  }
 
  .card-heading{
-  color: green;
+  color: #002d51;
   font-size: 31px;
   margin-bottom: 0px;
  }
@@ -101,3 +110,42 @@ a:hover {
   width: 50%!important;
   margin-left: 25%
  }
+
+ /* Styles chat */
+
+ .mck-box-top {
+  background-color : #002d51;
+ }
+
+ #mck-msg-new.mck-btn{
+  background-color : #002d51;
+  }
+
+  .mck-msg-right .mck-msg-box{
+  background-color: #002d51;
+  color:white;
+  }
+
+  mck-msg-left .mck-msg-box{
+  background-color: white;
+  color:black;
+  }
+/*   This is for the floating button */
+
+  .float{
+   position:fixed;
+   width:80px;
+   height:80px;
+   bottom:450px;
+   right:14px;
+   background-color: #002d51;
+   color:#FFF;
+   border-radius:50px;
+   text-align:center;
+   box-shadow: 2px 2px 3px #999;
+   z-index: 5;
+}
+
+.my-float{
+   margin-top:28px;
+}

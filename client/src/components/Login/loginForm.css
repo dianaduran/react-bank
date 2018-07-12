@@ -1,9 +1,6 @@
-.container{
-    /* background-image: linear-gradient(
-      #ffffff, #8db936
-  ); */
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: auto;
-   }
+.LoginCard{
+  background-image:linear-gradient(
+#ffffff, #646464
+    ); 
+    opacity: .7px;
+  }

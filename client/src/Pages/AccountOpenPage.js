@@ -65,7 +65,7 @@ class AccountOpenPage extends React.Component {
  
     if (valueSelect === "account=Checking" || valueSelect === "account=Saving")
    { 
-      if(this.state.bankName!=="" || this.state.bankRoute!=="" || this.state.bankAccount!=="") {
+      if(this.state.bankName!=="" && this.state.bankRoute!=="" && this.state.bankAccount!=="") {
         // console.log("form data", formData);
         axios.post("/auth/accountOpen/" + userId, formData)
           .then(res =>
@@ -75,6 +75,7 @@ class AccountOpenPage extends React.Component {
       }
       else{
         this.setState({ errors: 'Please complete the form to create a new account!', account:'', bankName:'', bankAccount:'', bankRoute:''});
+        valueSelect="";
       }
   }
 

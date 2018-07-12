@@ -1,6 +1,4 @@
 import React from 'react';
-import RaisedButton from 'material-ui/RaisedButton';
-import { Link } from "react-router-dom";
 import { CardTitle, CardText } from 'material-ui/Card';
 import { GridList, GridTile } from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
@@ -14,7 +12,7 @@ import Card3 from '../../image/CC_3_VB.svg';
 
 const style = {
     display: 'inline-block',
-    margin: '46px 32px 16px 0',
+    margin: '55px 32px 16px 0',
     width: '100%'
 };
 
@@ -37,18 +35,18 @@ const styles = {
 const tilesData = [
     {
         img: Card1,
-        title: 'Breakfast',
-        author: 'jill111',
+        title: 'MasterCard',
+        author: 'Gonza',
     },
     {
         img: Card2,
-        title: 'Tasty burger',
-        author: 'pashminu',
+        title: 'MasterCard',
+        author: 'Manoj',
     },
     {
         img: Card3,
-        title: 'Camera',
-        author: 'Danson67',
+        title: 'MasterCard',
+        author: 'D',
     }
 ]
 
@@ -59,7 +57,7 @@ class Header extends React.Component {
         return (
             <div>
                 <div className="container">
-                    <img className="homeImg" alt="Img" src={Imgen} />
+                    {/* <img className="homeImg" alt="Img" src={Imgen} /> */}
                     <div className="centered">
                         <CardTitle style={{ fontSize: '60px', color: 'green', fontFamily: 'fantasy' }}>No overdraft fees.</CardTitle>
                         <CardText style={{ fontSize: '50px', color: 'green' }}>No worries</CardText>

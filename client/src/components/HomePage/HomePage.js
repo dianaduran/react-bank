@@ -1,5 +1,4 @@
 import React from 'react';
-import { CardText } from 'material-ui/Card';
 import Auth from '../../modules/Auth';
 import "./homepage.css";
 import Header from "../Header/Header";
