@@ -12,7 +12,7 @@ import Card3 from '../../image/CC_3_VB.svg';
 
 const style = {
     display: 'inline-block',
-    margin: '55px 32px 16px 0',
+    margin: '-41px 0px 2px 0px',
     width: '100%'
 };
 
@@ -26,6 +26,7 @@ const styles = {
       display: 'flex',
       flexWrap: 'nowrap',
       overflowX: 'auto',
+      
     },
     titleStyle: {
       color: 'rgb(0, 188, 212)',

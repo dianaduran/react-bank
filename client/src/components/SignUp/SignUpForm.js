@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Card, CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-
+import './signupForm.css';
 
 const SignUpForm = ({
   onSubmit,
@@ -12,7 +12,7 @@ const SignUpForm = ({
   errors,
   user,
 }) => (
-  <Card className="container">
+  <Card className="container LoginCard">
     <form action="/" onSubmit={onSubmit}>
       <h2 className="card-heading">Sign Up</h2>
 
