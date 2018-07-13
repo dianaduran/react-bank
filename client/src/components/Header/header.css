@@ -23,3 +23,20 @@
     transform: translate(-50%, -50%);
 }
 
+.Paper{
+  background-color:inherit !important;
+  height: 216px;
+  padding: 0px
+}
+
+
+.Grid:hover {
+  box-shadow: 8px 8px 20px rgb(4, 14, 48)!important;
+  transform: scale(1.1);
+  cursor: pointer;
+  opacity: .5px;
+ }
+ 
+.Grid:active {
+  transform: translate(1px, 1px);
+ }

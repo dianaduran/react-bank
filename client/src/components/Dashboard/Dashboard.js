@@ -5,9 +5,9 @@ import { Card, CardText } from 'material-ui/Card';
 import Account from '../Account/Account';
 
 const Dashboard = ({ secretData, user }) => (
-  <Card className="container">
+  <Card className="container PaperAcc">
     <Account />
-    {secretData && <CardText style={{ fontSize: '16px', color: 'green' }}>Welcome <strong>{user.name}</strong>!<br />{secretData}</CardText>}
+    {secretData && <CardText style={{ fontSize: '18px', color: '#002d51' }}>Welcome <strong>{user.name}</strong>!<br />{secretData}</CardText>}
   </Card>
 );
 

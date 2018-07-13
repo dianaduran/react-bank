@@ -6,16 +6,17 @@ import Paper from 'material-ui/Paper';
 import { List, ListItem } from 'material-ui/List';
 import ActionGrade from 'material-ui/svg-icons/action/grade';
 import Divider from 'material-ui/Divider';
-
+import "./account.css";
 
 const style = {
   margin: '16px 0px 16px 0',
-  display: 'inherit'
+  display: 'inherit',
+  
  }
 
 const accStyle={
-  padding:'20px'
-}
+  padding:'80px',
+ }
 
 class Account extends React.Component {
 

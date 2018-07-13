@@ -100,7 +100,7 @@ a:hover {
  }
 
  .person{
-  width: 9%;
+  /* width: 9%; */
   margin-top: 8px;
  }
 
@@ -146,4 +146,9 @@ a:hover {
 
 .my-float{
    margin-top:28px;
+}
+
+.PaperOpen{
+  background-color:inherit !important;
+  text-align: center!important
 }

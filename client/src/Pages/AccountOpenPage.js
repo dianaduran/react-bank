@@ -114,7 +114,7 @@ class AccountOpenPage extends React.Component {
   render() {
     return (
       <div style={accStyle}>
-        <Card className="container">
+        <Paper style={style} zDepth={5} className="PaperOpen" >
           <form action="/" onSubmit={this.processForm}>
             <h2 className="card-heading">Select Account</h2>
 
@@ -129,9 +129,6 @@ class AccountOpenPage extends React.Component {
                 { value: 'saving', label: 'Saving' },
               ]}
             />
-
-            <Paper style={style} zDepth={5}>
-
               <div className="field-line">
                 <TextField
                   floatingLabelText="Bank name"
@@ -140,8 +137,6 @@ class AccountOpenPage extends React.Component {
                   value={this.state.bankName}
                 />
               </div>
-
-              <Divider />
 
               <div className="field-line">
                 <TextField
@@ -163,8 +158,6 @@ class AccountOpenPage extends React.Component {
                 />
               </div>
 
-              <Divider />
-
               <div className="field-line">
                 <TextField
                   floatingLabelText="Start Balance"
@@ -174,17 +167,13 @@ class AccountOpenPage extends React.Component {
                   value={this.state.balance}
                 />
               </div>
-            </Paper>
-
-
-
-            <div>
+             <div>
             </div>
             <div className="button-line">
               <RaisedButton type="submit" label="Submit" primary />
             </div>
           </form>
-        </Card>
+         </Paper>
       </div>
     );
   }
