@@ -15,7 +15,9 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // connect to the database and load models
-require('./server/models').connect(config.dbUri);
+const db =process.env.MONGODB_URI || config.dbUri;
+
+require('./server/models').connect(db);
 
 //pass the passport middleware
 app.use(passport.initialize());
