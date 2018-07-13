@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require('passport');
 const PORT = process.env.PORT || 3001;
@@ -16,6 +17,19 @@ if (process.env.NODE_ENV === "production") {
 
 // connect to the database and load models
 const db =process.env.MONGODB_URI || config.dbUri;
+
+//Connecting init and handler
+mongoose.Promise = Promise;
+mongoose.connect(db, function(error){
+	//Error
+	if(error){
+		console.log(error);
+	}
+	else{
+		console.log("mongoose is connected to mongo");
+	}
+})
+
 
 require('./server/models').connect(db);
 
