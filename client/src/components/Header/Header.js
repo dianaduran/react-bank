@@ -1,12 +1,10 @@
 import React from 'react';
 import { GridList, GridTile } from 'material-ui/GridList';
-import IconButton from 'material-ui/IconButton';
-import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import Paper from 'material-ui/Paper';
 import "./header.css";
-import Card1 from '../../image/CC_1_VB.svg';
-import Card2 from '../../image/CC_2_VB.svg';
-import Card3 from '../../image/CC_3_VB.svg';
+import Card1 from '../../image/CC_1_VB.png';
+import Card2 from '../../image/CC_2_VB.png';
+import Card3 from '../../image/CC_3_VB.png';
 
 const style = {
     display: 'inline-block',
@@ -24,7 +22,7 @@ const styles = {
       display: 'flex',
       flexWrap: 'nowrap',
       overflowX: 'auto',
-      paddingTop: '20px'
+      paddingTop: '6px'
      },
     titleStyle: {
       color: 'rgb(0, 188, 212)',
@@ -60,9 +58,8 @@ class Header extends React.Component {
                             <GridList style={styles.gridList} cols={2.2} className="Grid">
                                 {tilesData.map((tile) => (
                                     <GridTile
-                                        key={tile.img}
-                                        >
-                                        <img alt="headerImg" src={tile.img} />
+                                        key={tile.img}>
+                                        <img alt="headerImg" src={tile.img} className="headerImg" />
                                     </GridTile>
                                 ))}
                             </GridList>

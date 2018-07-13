@@ -7,14 +7,13 @@
   }
 
 
-.homeImg{
-/* background-image: url('../../image/Couple-banking-AdobeStock_125640641.jpeg'); */
+/* .homeImg{
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   height: 100%;
   width: 100%;
-}
+} */
 
 .centered {
     position: absolute;
@@ -39,4 +38,14 @@
  
 .Grid:active {
   transform: translate(1px, 1px);
+ }
+
+ .Grid > div{
+  height: auto!important;
+ }
+
+ .headerImg{
+   /* height: 60% !important;
+   top: 31%!important; */
+   width: 70%!important;
  }
