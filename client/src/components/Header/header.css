@@ -7,14 +7,6 @@
   }
 
 
-/* .homeImg{
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100%;
-  width: 100%;
-} */
-
 .centered {
     position: absolute;
     top: 50%;
@@ -47,5 +39,5 @@
  .headerImg{
    /* height: 60% !important;
    top: 31%!important; */
-   width: 70%!important;
+   width: 60%!important;
  }
